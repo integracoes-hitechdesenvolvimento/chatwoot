@@ -4,9 +4,10 @@ import { useStore } from 'vuex';
 import SignupForm from './components/Signup/Form.vue';
 import Testimonials from './components/Testimonials/Index.vue';
 import Spinner from 'shared/components/Spinner.vue';
-import signupBg from 'assets/images/auth/signup-bg.jpg';
+import { useAuthLogo } from 'shared/composables/useAuthLogo';
 
 const store = useStore();
+const { authLogo, authLogoDark, installationName } = useAuthLogo();
 
 const isLoading = ref(false);
 const globalConfig = computed(() => store.getters['globalConfig/get']);
@@ -25,12 +26,8 @@ const resizeContainers = () => {
 
 <template>
   <div
-    class="relative w-full h-full min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat p-4"
-    :style="{ backgroundImage: `url(${signupBg})` }"
+    class="relative w-full h-full min-h-screen flex items-center justify-center bg-n-brand/5 dark:bg-n-background p-4"
   >
-    <div
-      class="absolute inset-0 bg-n-gray-12/60 dark:bg-n-gray-1/80 backdrop-blur-sm"
-    />
     <div
       v-show="!isLoading"
       class="relative flex max-w-[960px] bg-white dark:bg-n-solid-2 rounded-lg outline outline-1 outline-n-container shadow-sm"
@@ -40,15 +37,15 @@ const resizeContainers = () => {
         <div class="max-w-[420px] w-full">
           <div class="mb-6">
             <img
-              :src="globalConfig.logo"
-              :alt="globalConfig.installationName"
-              class="block w-auto h-7 dark:hidden"
+              :src="authLogo"
+              :alt="installationName"
+              class="block w-auto h-12 max-w-[220px] dark:hidden"
             />
             <img
-              v-if="globalConfig.logoDark"
-              :src="globalConfig.logoDark"
-              :alt="globalConfig.installationName"
-              class="hidden w-auto h-7 dark:block"
+              v-if="authLogoDark"
+              :src="authLogoDark"
+              :alt="installationName"
+              class="hidden w-auto h-12 max-w-[220px] dark:block"
             />
             <h2 class="mt-6 text-2xl font-semibold text-n-slate-12">
               {{

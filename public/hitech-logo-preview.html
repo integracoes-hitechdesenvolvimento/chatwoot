@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Preview - Logo Hi Tech</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 2rem;
+      background: #f3f4f6;
+      color: #111827;
+    }
+    h1 { margin-bottom: 0.5rem; font-size: 1.5rem; }
+    p { margin-bottom: 2rem; color: #4b5563; }
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+      max-width: 900px;
+    }
+    .card {
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid #e5e7eb;
+    }
+    .card h2 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #374151;
+    }
+    .light { background: #ffffff; }
+    .dark { background: #111827; color: #f9fafb; }
+    .dark h2 { color: #d1d5db; }
+    img { display: block; max-width: 100%; height: auto; }
+    .icon { width: 64px; height: 64px; }
+    .full { max-width: 320px; }
+    code {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.25rem 0.5rem;
+      background: #e5e7eb;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+    .dark code { background: #1f2937; color: #e5e7eb; }
+  </style>
+</head>
+<body>
+  <h1>Logo Hi Tech Desenvolvimento</h1>
+  <p>Preview das logos usadas no Portal de Atendimentos (Nexus).</p>
+
+  <div class="grid">
+    <div class="card light">
+      <h2>Logo completa — fundo claro</h2>
+      <img class="full" src="/brand-assets/hitech-logo.png" alt="Hi Tech Desenvolvimento" />
+      <code>/brand-assets/hitech-logo.png</code>
+    </div>
+
+    <div class="card dark">
+      <h2>Logo completa — fundo escuro</h2>
+      <img class="full" src="/brand-assets/hitech-logo.png" alt="Hi Tech Desenvolvimento" />
+      <code>/brand-assets/hitech-logo.png</code>
+    </div>
+
+    <div class="card light">
+      <h2>Ícone — fundo claro</h2>
+      <img class="icon" src="/brand-assets/hitech-logo-icon.png" alt="Hi Tech ícone" />
+      <code>/brand-assets/hitech-logo-icon.png</code>
+    </div>
+
+    <div class="card dark">
+      <h2>Ícone — fundo escuro</h2>
+      <img class="icon" src="/brand-assets/hitech-logo-icon.png" alt="Hi Tech ícone" />
+      <code>/brand-assets/hitech-logo-icon.png</code>
+    </div>
+  </div>
+</body>
+</html>

@@ -8,6 +8,7 @@ import { useVuelidate } from '@vuelidate/core';
 import { SESSION_STORAGE_KEYS } from 'dashboard/constants/sessionStorage';
 import SessionStorage from 'shared/helpers/sessionStorage';
 import { useBranding } from 'shared/composables/useBranding';
+import { useAuthLogo } from 'shared/composables/useAuthLogo';
 
 // components
 import SimpleDivider from '../../components/Divider/SimpleDivider.vue';
@@ -46,8 +47,12 @@ export default {
   },
   setup() {
     const { replaceInstallationName } = useBranding();
+    const { authLogo, authLogoDark, installationName } = useAuthLogo();
     return {
       replaceInstallationName,
+      authLogo,
+      authLogoDark,
+      installationName,
       v$: useVuelidate(),
     };
   },
@@ -224,15 +229,15 @@ export default {
   >
     <section class="max-w-5xl mx-auto">
       <img
-        :src="globalConfig.logo"
-        :alt="globalConfig.installationName"
-        class="block w-auto h-8 mx-auto dark:hidden"
+        :src="authLogo"
+        :alt="installationName"
+        class="block w-auto h-12 max-w-[240px] mx-auto dark:hidden"
       />
       <img
-        v-if="globalConfig.logoDark"
-        :src="globalConfig.logoDark"
-        :alt="globalConfig.installationName"
-        class="hidden w-auto h-8 mx-auto dark:block"
+        v-if="authLogoDark"
+        :src="authLogoDark"
+        :alt="installationName"
+        class="hidden w-auto h-12 max-w-[240px] mx-auto dark:block"
       />
       <h2 class="mt-6 text-3xl font-medium text-center text-n-slate-12">
         {{ replaceInstallationName($t('LOGIN.TITLE')) }}

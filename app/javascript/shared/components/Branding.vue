@@ -30,6 +30,18 @@ export default {
     };
   },
   computed: {
+    logoSrc() {
+      const legacyMarkers = [
+        '/brand-assets/logo.svg',
+        '/brand-assets/logo_dark.svg',
+        '/brand-assets/logo_thumbnail.svg',
+      ];
+      const thumbnail = this.globalConfig.logoThumbnail;
+      if (!thumbnail || legacyMarkers.some(marker => thumbnail.includes(marker))) {
+        return '/brand-assets/hitech-logo-icon.png';
+      }
+      return thumbnail;
+    },
     brandRedirectURL() {
       try {
         const referrerHost = this.$store.getters['appConfig/getReferrerHost'];
@@ -65,7 +77,7 @@ export default {
       <img
         class="ltr:mr-1 rtl:ml-1 max-w-3 max-h-3"
         :alt="globalConfig.brandName"
-        :src="globalConfig.logoThumbnail"
+        :src="logoSrc"
       />
       <span>
         {{ replaceInstallationName($t('POWERED_BY')) }}

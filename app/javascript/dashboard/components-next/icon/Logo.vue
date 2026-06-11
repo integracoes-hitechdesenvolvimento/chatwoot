@@ -12,7 +12,12 @@ const globalConfig = useMapGetter('globalConfig/get');
     v-if="globalConfig.logoThumbnail"
     v-bind="attrs"
     :src="globalConfig.logoThumbnail"
-    alt="HiTech"
+    alt="Hi Tech Desenvolvimento"
   />
-  <img v-else v-bind="attrs" :src="hitechLogoIcon" alt="HiTech" />
+  <img
+    v-else
+    v-bind="attrs"
+    :src="hitechLogoIcon"
+    alt="Hi Tech Desenvolvimento"
+  />
 </template>
