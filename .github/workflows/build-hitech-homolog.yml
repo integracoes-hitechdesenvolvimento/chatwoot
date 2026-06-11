@@ -8,11 +8,12 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: integracoes-hitechdesenvolvimento/chatwoot
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    timeout-minutes: 180
 
     permissions:
       contents: read
@@ -33,6 +34,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image
+        id: build
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -40,6 +42,18 @@ jobs:
           push: true
           provenance: false
           sbom: false
+          cache-from: type=gha,scope=hitech-homolog
+          cache-to: type=gha,mode=max,scope=hitech-homolog
           tags: |
-            ghcr.io/${{ env.IMAGE_NAME }}:hitech-homolog
-            ghcr.io/${{ env.IMAGE_NAME }}:hitech-v4.13.0
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:hitech-homolog
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:hitech-v4.13.0
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+
+      - name: Print published image tags
+        run: |
+          echo "Published:"
+          echo "  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:hitech-homolog"
+          echo "  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:hitech-v4.13.0"
+          echo "Digest: ${{ steps.build.outputs.digest }}"
