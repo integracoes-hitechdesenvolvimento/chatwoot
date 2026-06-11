@@ -315,7 +315,7 @@ export default {
             >
               <router-link
                 to="auth/reset/password"
-                class="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
+                class="text-sm font-medium text-slate-400 transition-colors hover:text-slate-300"
                 tabindex="4"
               >
                 {{ $t('LOGIN.FORGOT_PASSWORD') }}
@@ -326,7 +326,7 @@ export default {
           <button
             type="submit"
             data-testid="submit_button"
-            class="flex w-full items-center justify-center rounded-xl bg-blue-600 px-4 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-colors hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
+            class="flex w-full items-center justify-center rounded-xl bg-[#2563EB] px-4 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#2563EB]/30 transition-colors hover:bg-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-60"
             :tabindex="3"
             :disabled="loginApi.showLoading"
           >
@@ -363,7 +363,7 @@ export default {
         href="https://hitechdesenvolvimento.com.br/"
         target="_blank"
         rel="noopener noreferrer"
-        class="font-medium text-blue-500 transition-colors hover:text-blue-400"
+        class="font-medium text-[#38BDF8] transition-colors hover:text-[#7EE8FF]"
       >
         {{ $t('LOGIN.FOOTER_BRAND') }}
       </a>
