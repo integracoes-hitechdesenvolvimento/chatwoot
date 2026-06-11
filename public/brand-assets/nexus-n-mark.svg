@@ -13,7 +13,9 @@
       <stop offset="1" stop-color="#1E3A8A"/>
     </linearGradient>
   </defs>
-  <path d="M44 8H52V56H44V8Z" fill="url(#nexus-n-right)"/>
-  <path d="M12 8H20V56H12V8Z" fill="url(#nexus-n-left)"/>
-  <path d="M20 8H30L44 56H34L20 8Z" fill="url(#nexus-n-diagonal)"/>
+  <g transform="translate(-3 0)">
+    <path d="M44 8H52V56H44V8Z" fill="url(#nexus-n-right)"/>
+    <path d="M12 8H20V56H12V8Z" fill="url(#nexus-n-left)"/>
+    <path d="M20 8H30L44 56H34L20 8Z" fill="url(#nexus-n-diagonal)"/>
+  </g>
 </svg>

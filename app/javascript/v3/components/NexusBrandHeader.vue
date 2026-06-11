@@ -15,18 +15,20 @@ defineProps({
 
 <template>
   <header class="flex flex-col items-center text-center">
-    <img
-      :src="nexusNMark"
-      alt=""
-      class="-translate-x-[0.12em] h-14 w-14 sm:h-16 sm:w-16"
-      aria-hidden="true"
-    />
+    <div class="inline-flex flex-col items-center">
+      <img
+        :src="nexusNMark"
+        alt=""
+        class="h-14 w-14 sm:h-16 sm:w-16"
+        aria-hidden="true"
+      />
 
-    <h1
-      class="mt-5 pr-[0.34em] text-[2.75rem] font-bold leading-none tracking-[0.34em] text-white sm:mt-6 sm:pr-[0.38em] sm:text-5xl sm:tracking-[0.38em]"
-    >
-      {{ brandName }}
-    </h1>
+      <h1
+        class="mt-5 text-[2.75rem] font-bold leading-none tracking-[0.34em] text-white sm:mt-6 sm:text-5xl sm:tracking-[0.38em]"
+      >
+        {{ brandName }}
+      </h1>
+    </div>
     <p
       class="mt-4 max-w-xs text-sm font-extralight leading-relaxed tracking-[0.06em] text-white/75 sm:max-w-sm sm:text-[0.95rem]"
     >

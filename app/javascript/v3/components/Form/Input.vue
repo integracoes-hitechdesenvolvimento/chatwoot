@@ -86,7 +86,7 @@ const isNexusVariant = computed(() => props.variant === 'nexus');
       :type="currentInputType"
       class="block w-full appearance-none sm:text-sm sm:leading-6"
       :class="{
-        'rounded-xl border border-slate-600/80 bg-[#1e293b] px-3 py-3.5 text-white shadow-none outline-none caret-blue-400 placeholder:text-slate-400 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 [color-scheme:dark] [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:shadow-[inset_0_0_0_1000px_#1e293b] [&:-webkit-autofill]:[-webkit-text-fill-color:white]':
+        'rounded-xl border border-slate-600/80 bg-[#1e293b] px-3 py-3.5 text-white shadow-none outline-none caret-blue-400 placeholder:text-slate-400 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 [color-scheme:dark] [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:shadow-[inset_0_0_0_1000px_#1e293b]':
           isNexusVariant,
         'border-none rounded-md shadow-sm bg-n-alpha-black2 outline outline-1 focus:outline focus:outline-1 text-n-slate-12 placeholder:text-n-slate-10':
           !isNexusVariant,
