@@ -1,4 +1,6 @@
 <script setup>
+import nexusNMark from 'dashboard/assets/nexus/nexus-n-mark.svg';
+
 defineProps({
   brandName: {
     type: String,
@@ -14,7 +16,7 @@ defineProps({
 <template>
   <header class="flex flex-col items-center text-center">
     <img
-      src="/brand-assets/nexus-n-mark.svg"
+      :src="nexusNMark"
       alt=""
       class="h-14 w-14 sm:h-16 sm:w-16"
       aria-hidden="true"

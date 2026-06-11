@@ -7,6 +7,7 @@ import { required, email } from '@vuelidate/validators';
 import { useVuelidate } from '@vuelidate/core';
 import { SESSION_STORAGE_KEYS } from 'dashboard/constants/sessionStorage';
 import SessionStorage from 'shared/helpers/sessionStorage';
+import nexusLoginBg from 'dashboard/assets/images/auth/nexus-login-bg.svg';
 // components
 import NexusBrandHeader from '../../components/NexusBrandHeader.vue';
 import SimpleDivider from '../../components/Divider/SimpleDivider.vue';
@@ -44,6 +45,7 @@ export default {
   },
   setup() {
     return {
+      nexusLoginBg,
       v$: useVuelidate(),
     };
   },
@@ -219,7 +221,8 @@ export default {
     class="dark relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#070B14] px-4 py-12 sm:px-6"
   >
     <div
-      class="pointer-events-none absolute inset-0 bg-[url('/assets/images/auth/nexus-login-bg.svg')] bg-cover bg-center bg-no-repeat"
+      class="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
+      :style="{ backgroundImage: `url(${nexusLoginBg})` }"
     />
     <div
       class="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#070B14]/20 via-transparent to-[#070B14]/90"
