@@ -1,6 +1,11 @@
 {
   "LOGIN": {
     "TITLE": "Portal de Atendimentos Access",
+    "SUBTITLE": "Conversational Operations Platform",
+    "BRAND_NAME": "NEXUS",
+    "FOOTER_BY": "by",
+    "FOOTER_BRAND": "Hi Tech",
+    "FOOTER_SUFFIX": "Desenvolvimento",
     "EMAIL": {
       "LABEL": "Email",
       "PLACEHOLDER": "example{'@'}companyname.com",
@@ -8,7 +13,7 @@
     },
     "PASSWORD": {
       "LABEL": "Password",
-      "PLACEHOLDER": "Password"
+      "PLACEHOLDER": "Your password"
     },
     "API": {
       "SUCCESS_MESSAGE": "Login successful",
@@ -22,7 +27,7 @@
     },
     "FORGOT_PASSWORD": "Forgot your password?",
     "CREATE_NEW_ACCOUNT": "Create a new account",
-    "SUBMIT": "Login",
+    "SUBMIT": "Sign in",
     "SAML": {
       "LABEL": "Login via SSO",
       "TITLE": "Initiate Single Sign-on (SSO)",

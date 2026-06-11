@@ -6,6 +6,10 @@ defineProps({
   hasError: { type: Boolean, default: false },
   helpMessage: { type: String, default: '' },
   errorMessage: { type: String, default: '' },
+  variant: {
+    type: String,
+    default: 'default',
+  },
 });
 </script>
 
@@ -14,8 +18,12 @@ defineProps({
     <label
       v-if="label"
       :for="name"
-      class="flex justify-between text-sm font-medium leading-6 text-n-slate-12"
-      :class="{ 'text-n-ruby-12': hasError }"
+      class="flex justify-between text-sm font-medium leading-6"
+      :class="[
+        variant === 'nexus' ? 'text-slate-300' : 'text-n-slate-12',
+        { 'text-n-ruby-12': hasError && variant !== 'nexus' },
+        { 'text-red-400': hasError && variant === 'nexus' },
+      ]"
     >
       <slot name="label">
         {{ label }}
@@ -28,7 +36,12 @@ defineProps({
           v-if="icon"
           size="16"
           :icon="icon"
-          class="absolute left-2 transform text-n-slate-9 w-5 h-5"
+          class="absolute transform w-5 h-5"
+          :class="
+            variant === 'nexus'
+              ? 'left-3 text-slate-500'
+              : 'left-2 text-n-slate-9'
+          "
         />
         <slot />
       </div>

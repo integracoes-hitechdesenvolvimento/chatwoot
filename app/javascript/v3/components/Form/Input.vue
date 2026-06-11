@@ -32,6 +32,11 @@ const props = defineProps({
     default: 'base',
     validator: value => ['base', 'compact'].includes(value),
   },
+  variant: {
+    type: String,
+    default: 'default',
+    validator: value => ['default', 'nexus'].includes(value),
+  },
 });
 
 const FIELDS = {
@@ -58,6 +63,8 @@ const currentInputType = computed(() => {
   }
   return props.type;
 });
+
+const isNexusVariant = computed(() => props.variant === 'nexus');
 </script>
 
 <template>
@@ -67,6 +74,7 @@ const currentInputType = computed(() => {
     :name="name"
     :has-error="hasError"
     :error-message="errorMessage"
+    :variant="variant"
   >
     <template #rightOfLabel>
       <slot />
@@ -76,15 +84,22 @@ const currentInputType = computed(() => {
       v-model="model"
       :name="name"
       :type="currentInputType"
-      class="block w-full border-none rounded-md shadow-sm bg-n-alpha-black2 appearance-none outline outline-1 focus:outline focus:outline-1 text-n-slate-12 placeholder:text-n-slate-10 sm:text-sm sm:leading-6 px-3 py-3"
+      class="block w-full appearance-none sm:text-sm sm:leading-6"
       :class="{
+        'rounded-xl border bg-slate-950/60 px-3 py-3.5 text-slate-100 shadow-none outline-none placeholder:text-slate-500 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20':
+          isNexusVariant,
+        'border-none rounded-md shadow-sm bg-n-alpha-black2 outline outline-1 focus:outline focus:outline-1 text-n-slate-12 placeholder:text-n-slate-10':
+          !isNexusVariant,
+        'border-red-500/60 focus:border-red-500/60 focus:ring-red-500/20': isNexusVariant && hasError,
+        'border-slate-700/90': isNexusVariant && !hasError,
         'error outline-n-ruby-8 dark:outline-n-ruby-8 hover:outline-n-ruby-9 dark:hover:outline-n-ruby-9 disabled:outline-n-ruby-8 dark:disabled:outline-n-ruby-8':
-          hasError,
+          !isNexusVariant && hasError,
         'outline-n-weak dark:outline-n-weak hover:outline-n-slate-6 dark:hover:outline-n-slate-6 focus:outline-n-brand dark:focus:outline-n-brand':
-          !hasError,
-        'px-3 py-3': spacing === 'base',
+          !isNexusVariant && !hasError,
+        'px-3 py-3': spacing === 'base' && !isNexusVariant,
         'px-3 py-2 mb-0': spacing === 'compact',
-        'pl-9': icon,
+        'pl-10': icon && isNexusVariant,
+        'pl-9': icon && !isNexusVariant,
         'pr-10': isPasswordField,
       }"
     />
@@ -96,6 +111,7 @@ const currentInputType = computed(() => {
       link
       :icon="isPasswordVisible ? 'i-lucide-eye-off' : 'i-lucide-eye'"
       class="absolute inset-y-0 right-0 pr-3"
+      :class="{ '!text-slate-400 hover:!text-slate-300': isNexusVariant }"
       :aria-label="isPasswordVisible ? 'Hide password' : 'Show password'"
       :aria-pressed="isPasswordVisible"
       @click="togglePasswordVisibility()"

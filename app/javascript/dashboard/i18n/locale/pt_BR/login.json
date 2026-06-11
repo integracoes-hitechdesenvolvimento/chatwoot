@@ -1,14 +1,19 @@
 {
   "LOGIN": {
     "TITLE": "Acesso ao Portal de Atendimentos",
+    "SUBTITLE": "Plataforma de Operações Conversacionais",
+    "BRAND_NAME": "NEXUS",
+    "FOOTER_BY": "by",
+    "FOOTER_BRAND": "Hi Tech",
+    "FOOTER_SUFFIX": "Desenvolvimento",
     "EMAIL": {
-      "LABEL": "E-mail",
-      "PLACEHOLDER": "nome{'@'}empresa.com.br",
+      "LABEL": "Email",
+      "PLACEHOLDER": "exemplo{'@'}empresa.com",
       "ERROR": "Por favor, insira um endereço de e-mail válido"
     },
     "PASSWORD": {
       "LABEL": "Senha",
-      "PLACEHOLDER": "Senha"
+      "PLACEHOLDER": "Sua senha"
     },
     "API": {
       "SUCCESS_MESSAGE": "Acesso bem-sucedido",
@@ -20,7 +25,7 @@
       "BUSINESS_ACCOUNTS_ONLY": "Use o endereço de endereço eletrônico da empresa para fazer ‘login’",
       "NO_ACCOUNT_FOUND": "Não encontramos uma conta para seu endereço de correio eletrônico."
     },
-    "FORGOT_PASSWORD": "Esqueceu-se da sua senha?",
+    "FORGOT_PASSWORD": "Esqueceu sua senha?",
     "CREATE_NEW_ACCOUNT": "Criar nova conta",
     "SUBMIT": "Entrar",
     "SAML": {

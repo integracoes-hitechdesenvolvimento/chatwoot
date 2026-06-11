@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" fill="none">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="42%" r="45%">
+      <stop offset="0%" stop-color="#2563EB" stop-opacity="0.45"/>
+      <stop offset="55%" stop-color="#1D4ED8" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#070B14" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowSoft" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#070B14" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1440" height="900" fill="#070B14"/>
+  <rect width="1440" height="900" fill="url(#glowSoft)"/>
+  <ellipse cx="720" cy="380" rx="480" ry="320" fill="url(#glow)"/>
+  <g stroke="#3B82F6" stroke-opacity="0.14" stroke-width="1">
+    <line x1="80" y1="160" x2="360" y2="280"/>
+    <line x1="360" y1="280" x2="620" y2="220"/>
+    <line x1="620" y1="220" x2="900" y2="300"/>
+    <line x1="900" y1="300" x2="1180" y2="200"/>
+    <line x1="1180" y1="200" x2="1360" y2="320"/>
+    <line x1="200" y1="480" x2="480" y2="420"/>
+    <line x1="480" y1="420" x2="720" y2="500"/>
+    <line x1="720" y1="500" x2="960" y2="440"/>
+    <line x1="960" y1="440" x2="1240" y2="520"/>
+    <line x1="140" y1="640" x2="420" y2="600"/>
+    <line x1="420" y1="600" x2="720" y2="680"/>
+    <line x1="720" y1="680" x2="1020" y2="620"/>
+    <line x1="1020" y1="620" x2="1300" y2="700"/>
+    <line x1="300" y1="120" x2="520" y2="360"/>
+    <line x1="920" y1="140" x2="1100" y2="380"/>
+  </g>
+  <g fill="#60A5FA">
+    <circle cx="80" cy="160" r="2.5" fill-opacity="0.5"/>
+    <circle cx="360" cy="280" r="3.5" fill-opacity="0.6"/>
+    <circle cx="620" cy="220" r="4" fill-opacity="0.7"/>
+    <circle cx="900" cy="300" r="3.5" fill-opacity="0.6"/>
+    <circle cx="1180" cy="200" r="3" fill-opacity="0.55"/>
+    <circle cx="1360" cy="320" r="2.5" fill-opacity="0.5"/>
+    <circle cx="200" cy="480" r="2.5" fill-opacity="0.5"/>
+    <circle cx="480" cy="420" r="3.5" fill-opacity="0.6"/>
+    <circle cx="720" cy="500" r="4.5" fill-opacity="0.75"/>
+    <circle cx="960" cy="440" r="3.5" fill-opacity="0.6"/>
+    <circle cx="1240" cy="520" r="3" fill-opacity="0.55"/>
+    <circle cx="140" cy="640" r="2.5" fill-opacity="0.5"/>
+    <circle cx="420" cy="600" r="3.5" fill-opacity="0.6"/>
+    <circle cx="720" cy="680" r="4" fill-opacity="0.7"/>
+    <circle cx="1020" cy="620" r="3.5" fill-opacity="0.6"/>
+    <circle cx="1300" cy="700" r="2.5" fill-opacity="0.5"/>
+  </g>
+</svg>

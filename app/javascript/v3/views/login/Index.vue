@@ -7,16 +7,13 @@ import { required, email } from '@vuelidate/validators';
 import { useVuelidate } from '@vuelidate/core';
 import { SESSION_STORAGE_KEYS } from 'dashboard/constants/sessionStorage';
 import SessionStorage from 'shared/helpers/sessionStorage';
-import { useBranding } from 'shared/composables/useBranding';
-import { useAuthLogo } from 'shared/composables/useAuthLogo';
-
 // components
+import NexusBrandHeader from '../../components/NexusBrandHeader.vue';
 import SimpleDivider from '../../components/Divider/SimpleDivider.vue';
 import FormInput from '../../components/Form/Input.vue';
 import GoogleOAuthButton from '../../components/GoogleOauth/Button.vue';
 import Spinner from 'shared/components/Spinner.vue';
 import Icon from 'dashboard/components-next/icon/Icon.vue';
-import NextButton from 'dashboard/components-next/button/Button.vue';
 import MfaVerification from 'dashboard/components/auth/MfaVerification.vue';
 
 const ERROR_MESSAGES = {
@@ -33,9 +30,9 @@ export default {
     FormInput,
     GoogleOAuthButton,
     Spinner,
-    NextButton,
     SimpleDivider,
     MfaVerification,
+    NexusBrandHeader,
     Icon,
   },
   props: {
@@ -46,13 +43,7 @@ export default {
     authError: { type: String, default: '' },
   },
   setup() {
-    const { replaceInstallationName } = useBranding();
-    const { authLogo, authLogoDark, installationName } = useAuthLogo();
     return {
-      replaceInstallationName,
-      authLogo,
-      authLogoDark,
-      installationName,
       v$: useVuelidate(),
     };
   },
@@ -225,62 +216,55 @@ export default {
 
 <template>
   <main
-    class="flex flex-col w-full min-h-screen py-20 bg-n-brand/5 dark:bg-n-background sm:px-6 lg:px-8"
+    class="dark relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#070B14] px-4 py-12 sm:px-6"
   >
-    <section class="max-w-5xl mx-auto">
-      <img
-        :src="authLogo"
-        :alt="installationName"
-        class="block w-auto h-12 max-w-[240px] mx-auto dark:hidden"
+    <div
+      class="pointer-events-none absolute inset-0 bg-[url('/assets/images/auth/nexus-login-bg.svg')] bg-cover bg-center bg-no-repeat"
+    />
+    <div
+      class="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#070B14]/20 via-transparent to-[#070B14]/90"
+    />
+
+    <div class="relative z-10 mb-8 sm:mb-10">
+      <NexusBrandHeader
+        :brand-name="$t('LOGIN.BRAND_NAME')"
+        :subtitle="$t('LOGIN.SUBTITLE')"
       />
-      <img
-        v-if="authLogoDark"
-        :src="authLogoDark"
-        :alt="installationName"
-        class="hidden w-auto h-12 max-w-[240px] mx-auto dark:block"
-      />
-      <h2 class="mt-6 text-3xl font-medium text-center text-n-slate-12">
-        {{ replaceInstallationName($t('LOGIN.TITLE')) }}
-      </h2>
-      <p v-if="showSignupLink" class="mt-3 text-sm text-center text-n-slate-11">
-        {{ $t('COMMON.OR') }}
-        <router-link to="auth/signup" class="lowercase text-link text-n-brand">
-          {{ $t('LOGIN.CREATE_NEW_ACCOUNT') }}
-        </router-link>
-      </p>
+    </div>
+
+    <section v-if="mfaRequired" class="relative z-10 w-full max-w-md">
+      <div
+        class="rounded-2xl border border-blue-500/20 bg-slate-900/70 p-8 shadow-[0_0_60px_rgba(37,99,235,0.14)] ring-1 ring-blue-400/10 backdrop-blur-md"
+      >
+        <MfaVerification
+          :mfa-token="mfaToken"
+          @verified="handleMfaVerified"
+          @cancel="handleMfaCancel"
+        />
+      </div>
     </section>
 
-    <!-- MFA Verification Section -->
-    <section v-if="mfaRequired" class="mt-11">
-      <MfaVerification
-        :mfa-token="mfaToken"
-        @verified="handleMfaVerified"
-        @cancel="handleMfaCancel"
-      />
-    </section>
-
-    <!-- Regular Login Section -->
     <section
       v-else
-      class="bg-white shadow sm:mx-auto mt-11 sm:w-full sm:max-w-lg dark:bg-n-solid-2 p-11 sm:shadow-lg sm:rounded-lg"
-      :class="{
-        'mb-8 mt-15': !showGoogleOAuth,
-        'animate-wiggle': loginApi.hasErrored,
-      }"
+      class="relative z-10 w-full max-w-md rounded-2xl border border-blue-500/20 bg-slate-900/70 p-8 shadow-[0_0_60px_rgba(37,99,235,0.14)] ring-1 ring-blue-400/10 backdrop-blur-md sm:p-10"
+      :class="{ 'animate-wiggle': loginApi.hasErrored }"
     >
       <div v-if="!email">
-        <div class="flex flex-col gap-4">
+        <div
+          v-if="showGoogleOAuth || showSamlLogin"
+          class="mb-6 flex flex-col gap-3"
+        >
           <GoogleOAuthButton v-if="showGoogleOAuth" />
           <div v-if="showSamlLogin" class="text-center">
             <router-link
               to="/app/login/sso"
-              class="inline-flex justify-center w-full px-4 py-3 items-center bg-n-background dark:bg-n-solid-3 rounded-md shadow-sm ring-1 ring-inset ring-n-container dark:ring-n-container focus:outline-offset-0 hover:bg-n-alpha-2 dark:hover:bg-n-alpha-2"
+              class="inline-flex w-full items-center justify-center rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-3 text-slate-100 transition-colors hover:border-blue-500/50 hover:bg-slate-800"
             >
               <Icon
                 icon="i-lucide-lock-keyhole"
-                class="size-5 text-n-slate-11"
+                class="size-5 text-slate-300"
               />
-              <span class="ml-2 text-base font-medium text-n-slate-12">
+              <span class="ml-2 text-base font-medium">
                 {{ $t('LOGIN.SAML.LABEL') }}
               </span>
             </router-link>
@@ -288,14 +272,17 @@ export default {
           <SimpleDivider
             v-if="showGoogleOAuth || showSamlLogin"
             :label="$t('COMMON.OR')"
-            class="uppercase"
+            class="uppercase text-slate-500"
           />
         </div>
+
         <form class="space-y-5" @submit.prevent="submitFormLogin">
           <FormInput
             v-model="credentials.email"
             name="email_address"
             type="text"
+            icon="mail"
+            variant="nexus"
             data-testid="email_input"
             :tabindex="1"
             required
@@ -304,43 +291,80 @@ export default {
             :has-error="v$.credentials.email.$error"
             @input="v$.credentials.email.$touch"
           />
-          <FormInput
-            v-model="credentials.password"
-            type="password"
-            name="password"
-            data-testid="password_input"
-            required
-            :tabindex="2"
-            :label="$t('LOGIN.PASSWORD.LABEL')"
-            :placeholder="$t('LOGIN.PASSWORD.PLACEHOLDER')"
-            :has-error="v$.credentials.password.$error"
-            @input="v$.credentials.password.$touch"
-          >
-            <p v-if="!globalConfig.disableUserProfileUpdate">
+          <div class="space-y-2">
+            <FormInput
+              v-model="credentials.password"
+              type="password"
+              name="password"
+              icon="lock-closed"
+              variant="nexus"
+              data-testid="password_input"
+              required
+              :tabindex="2"
+              :label="$t('LOGIN.PASSWORD.LABEL')"
+              :placeholder="$t('LOGIN.PASSWORD.PLACEHOLDER')"
+              :has-error="v$.credentials.password.$error"
+              @input="v$.credentials.password.$touch"
+            />
+            <div
+              v-if="!globalConfig.disableUserProfileUpdate"
+              class="flex justify-end"
+            >
               <router-link
                 to="auth/reset/password"
-                class="text-sm text-link"
+                class="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
                 tabindex="4"
               >
                 {{ $t('LOGIN.FORGOT_PASSWORD') }}
               </router-link>
-            </p>
-          </FormInput>
-          <NextButton
-            lg
+            </div>
+          </div>
+
+          <button
             type="submit"
             data-testid="submit_button"
-            class="w-full"
+            class="flex w-full items-center justify-center rounded-xl bg-blue-600 px-4 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-colors hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
             :tabindex="3"
-            :label="$t('LOGIN.SUBMIT')"
             :disabled="loginApi.showLoading"
-            :is-loading="loginApi.showLoading"
-          />
+          >
+            <Spinner
+              v-if="loginApi.showLoading"
+              color-scheme="primary"
+              size=""
+            />
+            <span v-else>{{ $t('LOGIN.SUBMIT') }}</span>
+          </button>
         </form>
+
+        <p
+          v-if="showSignupLink"
+          class="mt-6 text-center text-sm text-slate-400"
+        >
+          {{ $t('COMMON.OR') }}
+          <router-link
+            to="auth/signup"
+            class="font-medium text-blue-400 hover:text-blue-300"
+          >
+            {{ $t('LOGIN.CREATE_NEW_ACCOUNT') }}
+          </router-link>
+        </p>
       </div>
-      <div v-else class="flex items-center justify-center">
+      <div v-else class="flex items-center justify-center py-10">
         <Spinner color-scheme="primary" size="" />
       </div>
     </section>
+
+    <footer class="relative z-10 mt-8 text-center text-sm text-slate-400 sm:mt-10">
+      {{ $t('LOGIN.FOOTER_BY') }}
+      <a
+        href="https://hitechdesenvolvimento.com.br/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-medium text-blue-500 transition-colors hover:text-blue-400"
+      >
+        {{ $t('LOGIN.FOOTER_BRAND') }}
+      </a>
+      {{ $t('LOGIN.FOOTER_SUFFIX') }}
+    </footer>
   </main>
 </template>
