@@ -7,7 +7,7 @@
     "FOOTER_BRAND": "Hi Tech",
     "FOOTER_SUFFIX": "Desenvolvimento",
     "EMAIL": {
-      "LABEL": "Email",
+      "LABEL": "E-mail",
       "PLACEHOLDER": "exemplo{'@'}empresa.com",
       "ERROR": "Por favor, insira um endereço de e-mail válido"
     },
