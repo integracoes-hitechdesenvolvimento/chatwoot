@@ -1,18 +1,20 @@
 # ------- Branding Related Config ------- #
+# Community/self-hosted installs reconcile these values daily via
+# Internal::ReconcilePlanConfigService — keep them aligned with HiTech branding.
 - name: INSTALLATION_NAME
-  value: 'Chatwoot'
+  value: 'Hi Tech Desenvolvimento - Portal de Atendimentos'
 - name: LOGO_THUMBNAIL
-  value: '/brand-assets/logo_thumbnail.svg'
+  value: '/brand-assets/nexus-icon.png'
 - name: LOGO
-  value: '/brand-assets/logo.svg'
+  value: '/brand-assets/hitech-logo.png'
 - name: LOGO_DARK
-  value: '/brand-assets/logo_dark.svg'
+  value: '/brand-assets/hitech-logo.png'
 - name: BRAND_URL
-  value: 'https://www.chatwoot.com'
+  value: 'https://hitechdesenvolvimento.com.br/'
 - name: WIDGET_BRAND_URL
-  value: 'https://www.chatwoot.com'
+  value: 'https://hitechdesenvolvimento.com.br/'
 - name: BRAND_NAME
-  value: 'Chatwoot'
+  value: 'Hi Tech Desenvolvimento'
 - name: TERMS_URL
   value: 'https://www.chatwoot.com/terms-of-service'
 - name: PRIVACY_URL
