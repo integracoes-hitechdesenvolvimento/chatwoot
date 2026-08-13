@@ -4,7 +4,7 @@
 - name: INSTALLATION_NAME
   value: 'Auremed - Portal de Atendimentos'
 - name: LOGO_THUMBNAIL
-  value: '/brand-assets/auremed-logo.png'
+  value: '/brand-assets/auremed-icon.png'
 - name: LOGO
   value: '/brand-assets/auremed-logo.png'
 - name: LOGO_DARK

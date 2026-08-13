@@ -19,9 +19,7 @@
   display_title: 'Installation Name'
   description: 'The installation wide name that would be used in the dashboard, title etc.'
 - name: LOGO_THUMBNAIL
-  value: '/brand-assets/auremed-logo.png'
-  display_title: 'Logo Thumbnail'
-  description: 'The thumbnail that would be used for favicon (512px X 512px)'
+  value: '/brand-assets/auremed-icon.png'
 - name: LOGO
   value: '/brand-assets/auremed-logo.png'
   display_title: 'Logo'
