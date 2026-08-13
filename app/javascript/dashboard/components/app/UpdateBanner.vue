@@ -4,6 +4,7 @@ import { LOCAL_STORAGE_KEYS } from 'dashboard/constants/localStorage';
 import { LocalStorage } from 'shared/helpers/localStorage';
 import { mapGetters } from 'vuex';
 import { useAdmin } from 'dashboard/composables/useAdmin';
+import { useBranding } from 'shared/composables/useBranding';
 import { hasAnUpdateAvailable } from './versionCheckHelper';
 
 export default {
@@ -13,8 +14,10 @@ export default {
   },
   setup() {
     const { isAdmin } = useAdmin();
+    const { replaceInstallationName } = useBranding();
     return {
       isAdmin,
+      replaceInstallationName,
     };
   },
   data() {
@@ -29,9 +32,11 @@ export default {
       );
     },
     bannerMessage() {
-      return this.$t('GENERAL_SETTINGS.UPDATE_CHATWOOT', {
-        latestChatwootVersion: this.latestChatwootVersion,
-      });
+      return this.replaceInstallationName(
+        this.$t('GENERAL_SETTINGS.UPDATE_CHATWOOT', {
+          latestChatwootVersion: this.latestChatwootVersion,
+        })
+      );
     },
     shouldShowBanner() {
       return (

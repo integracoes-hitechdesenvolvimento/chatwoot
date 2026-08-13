@@ -1,9 +1,9 @@
-name: Build and publish Chatwoot HiTech homolog image
+name: Build and publish Chatwoot Auremed homolog image
 
 on:
   push:
     branches:
-      - hitech-custom-v4.13.0
+      - hitech-auremed
   workflow_dispatch:
 
 env:
@@ -42,11 +42,10 @@ jobs:
           push: true
           provenance: false
           sbom: false
-          cache-from: type=gha,scope=hitech-homolog
-          cache-to: type=gha,mode=max,scope=hitech-homolog
+          cache-from: type=gha,scope=hitech-auremed
+          cache-to: type=gha,mode=max,scope=hitech-auremed
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:hitech-homolog
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:hitech-v4.13.0
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:hitech-auremed
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
@@ -54,6 +53,5 @@ jobs:
       - name: Print published image tags
         run: |
           echo "Published:"
-          echo "  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:hitech-homolog"
-          echo "  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:hitech-v4.13.0"
+          echo "  ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:hitech-auremed"
           echo "Digest: ${{ steps.build.outputs.digest }}"

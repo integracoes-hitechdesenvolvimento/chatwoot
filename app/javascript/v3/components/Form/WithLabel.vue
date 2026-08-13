@@ -20,7 +20,7 @@ defineProps({
       :for="name"
       class="flex justify-between text-sm font-medium leading-6"
       :class="[
-        variant === 'nexus' ? 'text-slate-300' : 'text-n-slate-12',
+        variant === 'nexus' ? 'text-white/80' : 'text-n-slate-12',
         { 'text-n-ruby-12': hasError && variant !== 'nexus' },
         { 'text-red-400': hasError && variant === 'nexus' },
       ]"
@@ -39,7 +39,7 @@ defineProps({
           class="absolute transform w-5 h-5"
           :class="
             variant === 'nexus'
-              ? 'left-3 text-slate-500'
+              ? 'left-3 text-white/40'
               : 'left-2 text-n-slate-9'
           "
         />

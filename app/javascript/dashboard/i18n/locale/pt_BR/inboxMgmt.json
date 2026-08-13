@@ -1123,7 +1123,7 @@
         "USER_MESSAGE": "Oi",
         "AGENT_MESSAGE": "Olá"
       },
-      "BRANDING_TEXT": "Nexus by Hi Tech Desenvolvimento",
+      "BRANDING_TEXT": "Auremed by Hi Tech Desenvolvimento",
       "SCRIPT_SETTINGS": "\n      window.chatwootSettings = {options};"
     },
     "EMAIL_PROVIDERS": {

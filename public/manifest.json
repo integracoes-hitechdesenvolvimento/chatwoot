@@ -1,6 +1,6 @@
 {
-  "name": "Hi Tech Desenvolvimento - Portal de Atendimentos",
-  "short_name": "Nexus",
+  "name": "Auremed",
+  "short_name": "Auremed",
   "icons": [{
     "src": "\/android-icon-36x36.png",
     "sizes": "36x36",
@@ -39,6 +39,6 @@
    }],
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#070B14",
-  "theme_color": "#070B14"
+  "background_color": "#0a1f1b",
+  "theme_color": "#0a1f1b"
 }

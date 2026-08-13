@@ -86,12 +86,12 @@ const isNexusVariant = computed(() => props.variant === 'nexus');
       :type="currentInputType"
       class="block w-full appearance-none sm:text-sm sm:leading-6"
       :class="{
-        'rounded-xl border border-slate-600/80 bg-[#1e293b] px-3 py-3.5 text-white shadow-none outline-none caret-blue-400 placeholder:text-slate-400 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 [color-scheme:dark] [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:shadow-[inset_0_0_0_1000px_#1e293b]':
+        'rounded-xl border border-[#c4a35a]/50 bg-black/70 px-3 py-3.5 text-white shadow-none outline-none caret-[#c4a35a] placeholder:text-white/35 focus:border-[#c4a35a] focus:ring-2 focus:ring-[#c4a35a]/20 [color-scheme:dark] [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:shadow-[inset_0_0_0_1000px_#071412]':
           isNexusVariant,
         'border-none rounded-md shadow-sm bg-n-alpha-black2 outline outline-1 focus:outline focus:outline-1 text-n-slate-12 placeholder:text-n-slate-10':
           !isNexusVariant,
         'border-red-500/60 focus:border-red-500/60 focus:ring-red-500/20': isNexusVariant && hasError,
-        'border-slate-700/90': isNexusVariant && !hasError,
+        'border-[#c4a35a]/50': isNexusVariant && !hasError,
         'error outline-n-ruby-8 dark:outline-n-ruby-8 hover:outline-n-ruby-9 dark:hover:outline-n-ruby-9 disabled:outline-n-ruby-8 dark:disabled:outline-n-ruby-8':
           !isNexusVariant && hasError,
         'outline-n-weak dark:outline-n-weak hover:outline-n-slate-6 dark:hover:outline-n-slate-6 focus:outline-n-brand dark:focus:outline-n-brand':
@@ -111,7 +111,7 @@ const isNexusVariant = computed(() => props.variant === 'nexus');
       link
       :icon="isPasswordVisible ? 'i-lucide-eye-off' : 'i-lucide-eye'"
       class="absolute inset-y-0 right-0 pr-3"
-      :class="{ '!text-slate-400 hover:!text-slate-300': isNexusVariant }"
+      :class="{ '!text-white/40 hover:!text-white/70': isNexusVariant }"
       :aria-label="isPasswordVisible ? 'Hide password' : 'Show password'"
       :aria-pressed="isPasswordVisible"
       @click="togglePasswordVisibility()"

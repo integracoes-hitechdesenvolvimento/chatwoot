@@ -7,7 +7,6 @@ import { required, email } from '@vuelidate/validators';
 import { useVuelidate } from '@vuelidate/core';
 import { SESSION_STORAGE_KEYS } from 'dashboard/constants/sessionStorage';
 import SessionStorage from 'shared/helpers/sessionStorage';
-import nexusLoginBg from 'dashboard/assets/images/auth/nexus-login-bg.svg';
 // components
 import NexusBrandHeader from '../../components/NexusBrandHeader.vue';
 import SimpleDivider from '../../components/Divider/SimpleDivider.vue';
@@ -45,7 +44,6 @@ export default {
   },
   setup() {
     return {
-      nexusLoginBg,
       v$: useVuelidate(),
     };
   },
@@ -218,14 +216,10 @@ export default {
 
 <template>
   <main
-    class="dark relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#070B14] px-4 py-12 sm:px-6"
+    class="dark relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#0a1f1b] px-4 py-12 sm:px-6"
   >
     <div
-      class="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
-      :style="{ backgroundImage: `url(${nexusLoginBg})` }"
-    />
-    <div
-      class="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#070B14]/20 via-transparent to-[#070B14]/90"
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_18%,#163c32_0%,#0a1f1b_48%,#071412_100%)]"
     />
 
     <div class="relative z-10 mb-8 sm:mb-10">
@@ -237,7 +231,7 @@ export default {
 
     <section v-if="mfaRequired" class="relative z-10 w-full max-w-md">
       <div
-        class="rounded-2xl border border-blue-500/20 bg-slate-900/70 p-8 shadow-[0_0_60px_rgba(37,99,235,0.14)] ring-1 ring-blue-400/10 backdrop-blur-md"
+        class="rounded-2xl border border-[#c4a35a]/40 bg-[#0e241f]/90 p-8 shadow-[0_0_50px_rgba(196,163,90,0.12)]"
       >
         <MfaVerification
           :mfa-token="mfaToken"
@@ -249,7 +243,7 @@ export default {
 
     <section
       v-else
-      class="relative z-10 w-full max-w-md rounded-2xl border border-blue-500/20 bg-slate-900/70 p-8 shadow-[0_0_60px_rgba(37,99,235,0.14)] ring-1 ring-blue-400/10 backdrop-blur-md sm:p-10"
+      class="relative z-10 w-full max-w-md rounded-2xl border border-[#c4a35a]/40 bg-[#0e241f]/90 p-8 shadow-[0_0_50px_rgba(196,163,90,0.12)] sm:p-10"
       :class="{ 'animate-wiggle': loginApi.hasErrored }"
     >
       <div v-if="!email">
@@ -315,7 +309,7 @@ export default {
             >
               <router-link
                 to="auth/reset/password"
-                class="text-sm font-medium text-slate-400 transition-colors hover:text-slate-300"
+                class="text-sm font-medium text-white/50 transition-colors hover:text-white/80"
                 tabindex="4"
               >
                 {{ $t('LOGIN.FORGOT_PASSWORD') }}
@@ -326,7 +320,7 @@ export default {
           <button
             type="submit"
             data-testid="submit_button"
-            class="flex w-full items-center justify-center rounded-xl bg-[#2563EB] px-4 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#2563EB]/30 transition-colors hover:bg-[#1d4ed8] disabled:cursor-not-allowed disabled:opacity-60"
+            class="flex w-full items-center justify-center rounded-xl bg-[#1f5c48] px-4 py-3.5 text-base font-semibold text-white shadow-lg shadow-black/20 transition-colors hover:bg-[#247056] disabled:cursor-not-allowed disabled:opacity-60"
             :tabindex="3"
             :disabled="loginApi.showLoading"
           >
@@ -346,7 +340,7 @@ export default {
           {{ $t('COMMON.OR') }}
           <router-link
             to="auth/signup"
-            class="font-medium text-blue-400 hover:text-blue-300"
+            class="font-medium text-[#c4a35a] hover:text-[#e0c27a]"
           >
             {{ $t('LOGIN.CREATE_NEW_ACCOUNT') }}
           </router-link>
@@ -357,13 +351,13 @@ export default {
       </div>
     </section>
 
-    <footer class="relative z-10 mt-8 text-center text-sm text-slate-400 sm:mt-10">
+    <footer class="relative z-10 mt-8 text-center text-sm text-white/50 sm:mt-10">
       {{ $t('LOGIN.FOOTER_BY') }}
       <a
         href="https://hitechdesenvolvimento.com.br/"
         target="_blank"
         rel="noopener noreferrer"
-        class="font-medium text-[#38BDF8] transition-colors hover:text-[#7EE8FF]"
+        class="font-medium text-[#c4a35a] transition-colors hover:text-[#e0c27a]"
       >
         {{ $t('LOGIN.FOOTER_BRAND') }}
       </a>
