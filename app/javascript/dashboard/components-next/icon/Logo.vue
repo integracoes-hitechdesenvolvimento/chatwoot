@@ -1,23 +1,10 @@
 <script setup>
 import { useAttrs } from 'vue';
-import { useMapGetter } from 'dashboard/composables/store';
-import hitechLogoIcon from 'dashboard/assets/hitech/hitech-logo-icon.png';
+import auremedLogo from 'dashboard/assets/auremed/auremed-logo.png';
 
 const attrs = useAttrs();
-const globalConfig = useMapGetter('globalConfig/get');
 </script>
 
 <template>
-  <img
-    v-if="globalConfig.logoThumbnail"
-    v-bind="attrs"
-    :src="globalConfig.logoThumbnail"
-    alt="Auremed"
-  />
-  <img
-    v-else
-    v-bind="attrs"
-    :src="hitechLogoIcon"
-    alt="Auremed"
-  />
+  <img v-bind="attrs" :src="auremedLogo" alt="Auremed" />
 </template>

@@ -2,7 +2,7 @@
 # Community/self-hosted installs reconcile these values daily via
 # Internal::ReconcilePlanConfigService — keep them aligned with Auremed branding.
 - name: INSTALLATION_NAME
-  value: 'Auremed'
+  value: 'Auremed - Portal de Atendimentos'
 - name: LOGO_THUMBNAIL
   value: '/brand-assets/auremed-logo.png'
 - name: LOGO
